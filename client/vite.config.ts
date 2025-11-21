@@ -11,4 +11,13 @@ export default defineConfig({
       '@mui/styled-engine': '@mui/styled-engine-sc',
     },
   },
+  server: {
+    proxy: {
+      // Все запросы к /api/* проксируются на backend без CORS
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+    },
+  },
 })
